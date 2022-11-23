@@ -1,12 +1,37 @@
 <%- include('header') %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1 class="title is-1"><%= title %></h1>
+    <p class="subtitle is-3">Sign up to send something</p>
     <form action="/signup" method="post">
-      <input required type="text" value="<%= body.name || '' %>" name="name" placeholder="name" /><br />
-      <input type="text" value="<%= body.surname || '' %>" name="surname" placeholder="surname" /><br />
-      <input required type="text" value="<%= body.username || '' %>" name="username" placeholder="username" /><br />
-      <input required type="password" name="password" placeholder="password" /><br />
-      <input required type="password" name="passwordConfirm" placeholder="password confirmation" /><br />
-      <input type="submit" value="Sign Up" />
+      <div class="field">
+        <label class="label">Name:</label>
+        <div class="control">
+          <input class="input" required type="text" value="<%= body.name || '' %>" name="name" placeholder="name" /><br />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Surname:</label>
+        <div class="control">
+          <input class="input" type="text" value="<%= body.surname || '' %>" name="surname" placeholder="surname" /><br />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Username:</label>
+        <div class="control">
+          <input class="input" required type="text" value="<%= body.username || '' %>" name="username" placeholder="username" /><br />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password:</label>
+        <div class="control">
+          <input class="input" required type="password" name="password" placeholder="password" /><br />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Confirm password:</label>
+        <div class="control">
+          <input class="input" required type="password" name="passwordConfirm" placeholder="password confirmation" /><br />
+        </div>
+      </div>
+      <input class="button is-primary" type="submit" value="Sign Up" />
     </form>
 <%- include('footer') %>

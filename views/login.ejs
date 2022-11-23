@@ -1,9 +1,19 @@
 <%- include('header') %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1 class="title is-1"><%= title %></h1>
+    <p class="subtitle is-3">We've waited to you</p>
     <form action="/login" method="post">
-      <input required type="text" name="username" placeholder="username" />
-      <input required type="password" name="password" placeholder="password" />
-      <input type="submit" value="Login" />
+      <div class="field">
+        <label class="label">Username:</label>
+        <div class="control">
+          <input class="input" required type="text" name="username" placeholder="username" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password:</label>
+        <div class="control">
+          <input class="input" required type="password" name="password" placeholder="password" />
+        </div>
+      </div>
+      <input class="button is-primary" type="submit" value="Login" />
     </form>
 <%- include('footer') %>

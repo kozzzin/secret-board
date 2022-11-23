@@ -39,6 +39,13 @@ a {
   display: flex;
   justify-content: end;
   gap: 10px;
+  align-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.nav-buttons strong {
+  color: #fff;
 }
 
 
@@ -68,4 +75,25 @@ form {
   margin: 0 0 25px 0;
   border: 1px solid rgba(0,0,0,0.1);
   max-width: 500px;
+}
+
+
+.member {
+  display: inline-block;
+  font-weight: 100;
+  color: goldenrod;
+  font-size: 0.8rem;
+}
+
+#admin {
+  color: red;
+}
+
+#admin::after {
+  content: '★'
+}
+
+.admin {
+  background-color: bisque;
+  border: 1px solid black;
 }

@@ -311,6 +311,18 @@ app.post('/newmessage', (req,res,next) => {
   // return res.redirect('/login');
 });
 
+
+app.post('/delete/:id', (req,res,next) => {
+  if (!!req.user && !!req.user.isAdmin) {
+    Message.findByIdAndDelete(req.params.id, function(err, result) {
+      if (err) return res.send(err);
+      return res.redirect('/');
+    })
+  } else {
+    res.send('you dont have rights for this page');
+  }
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

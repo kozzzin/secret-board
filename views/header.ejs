@@ -20,6 +20,7 @@
         <% if (!user.isMember) { %>
         <a href="/newmember"><button class="button is-info">Become a member</button></a>
         <% } %>
+        <span>logged in as: <strong><%= user.username %></strong></span>
         <a href="/logout"><button class="button is-danger">Log Out</button></a>
       <% } else { %>
         <a href="/login"><button class="button is-primary">Log In</button></a>

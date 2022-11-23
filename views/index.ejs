@@ -3,26 +3,17 @@
     <p class="subtitle is-3">Welcome to <%= title %></p>
 
     <% if (!!user) { %>
-      <p>Ti zaloginen, congrats!</p>
-      <a href="/newmessage"><button class="button is-info">Add new message</button></a>
-    <%  if (user.admin) { %>
-      <p>You are admin</p>
-    <% } %>
+      <a href="/newmessage"><button class="button is-info">Add new message</button></a><br/><br/>
 
-    <% if (user.isMember) { %>
-      <p>You are member</p>
-    <% }
-    } else { %>
-      <p>ti prosto chelovek</p>
-    <% } %>
-
-    <% if (!!messages) { %>
+    <% } if (!!messages) { %>
       <% messages.forEach((message) => { 
-        
+
         const hidden = {
             author: '[hidden]',
             date: '[hidden]',
             notMember: true,
+            member:  message.author.isMember ? ' |member' : '',
+            admin: message.author.isAdmin ? '|admin' : '',
           };
           
           if (!!user) {
@@ -31,16 +22,24 @@
             hidden.notMember = false; 
           }
         %>
-        <div class="post">
+        <div class="post <%= hidden.admin ? 'admin' : '' %>">
           <h3 class="title is-5"><%= message.title %></h3>
           <p class="subtitle is-6"><%= message.text %></p>
-          <strong>Author: <%= hidden.author %></strong>
+          <strong>Author: <%= hidden.author %><span id="<%= hidden.admin ? 'admin' : '' %>" class="member"><%= hidden.admin || hidden.member %></span></strong>
           <em>Posted on: <%= hidden.date  %></em>
           <% if (hidden.notMember) { %>
             <hr>
             <p>Log in and become a member to see date and author</p><br />
               <a href="/login"><button class="button is-info">Log in</button></a>
             
+          <% } %>
+          <% if (!!user) { %>
+            <% if (user.isAdmin) { %>
+              <hr />
+              <form method="post" action="/delete/<%= message._id %>">
+                <input class="button is-danger" type="submit" value="Delete" />
+              </form>
+            <% } %>
           <% } %>
         </div>
     <% });} %>
