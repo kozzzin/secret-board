@@ -1,0 +1,9 @@
+<%- include('header') %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="/login" method="post">
+      <input required type="text" name="username" placeholder="username" />
+      <input required type="password" name="password" placeholder="password" />
+      <input type="submit" value="Login" />
+    </form>
+<%- include('footer') %>

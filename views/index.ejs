@@ -1,0 +1,52 @@
+<%- include('header') %>
+    <h1 class="title is-1"><%= title %></h1>
+    <p class="subtitle is-3">Welcome to <%= title %></p>
+
+    <% if (!!user) { %>
+      <p>Ti zaloginen, congrats!</p>
+      <a href="/newmessage"><button class="button is-info">Add new message</button></a>
+    <%  if (user.admin) { %>
+      <p>You are admin</p>
+    <% } %>
+
+    <% if (user.isMember) { %>
+      <p>You are member</p>
+    <% }
+    } else { %>
+      <p>ti prosto chelovek</p>
+    <% } %>
+
+    <% if (!!messages) { %>
+      <% messages.forEach((message) => { 
+        
+        const hidden = {
+            author: '[hidden]',
+            date: '[hidden]',
+            notMember: true,
+          };
+          
+          if (!!user) {
+            hidden.author = message.author.username;
+            hidden.date = message.date.toLocaleString();
+            hidden.notMember = false; 
+          }
+        %>
+        <div class="post">
+          <h3 class="title is-5"><%= message.title %></h3>
+          <p class="subtitle is-6"><%= message.text %></p>
+          <strong>Author: <%= hidden.author %></strong>
+          <em>Posted on: <%= hidden.date  %></em>
+          <% if (hidden.notMember) { %>
+            <hr>
+            <p>Log in and become a member to see date and author</p><br />
+              <a href="/login"><button class="button is-info">Log in</button></a>
+            
+          <% } %>
+        </div>
+    <% });} %>
+<%- include('footer') %>
+
+
+<!-- // add delete to messages
+// check project requirements
+// add admin Login -->

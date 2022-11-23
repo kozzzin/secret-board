@@ -1,0 +1,12 @@
+<%- include('header') %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="/signup" method="post">
+      <input required type="text" value="<%= body.name || '' %>" name="name" placeholder="name" /><br />
+      <input type="text" value="<%= body.surname || '' %>" name="surname" placeholder="surname" /><br />
+      <input required type="text" value="<%= body.username || '' %>" name="username" placeholder="username" /><br />
+      <input required type="password" name="password" placeholder="password" /><br />
+      <input required type="password" name="passwordConfirm" placeholder="password confirmation" /><br />
+      <input type="submit" value="Sign Up" />
+    </form>
+<%- include('footer') %>

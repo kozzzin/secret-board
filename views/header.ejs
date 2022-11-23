@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+  <nav class="navbar">
+    <div class="logo">
+      Secret Board
+    </div>
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="/newmessage">New message</a></li>
+    </ul>
+    <div class="nav-buttons">
+      <% if(!!user) { %>
+        <% if (!user.isMember) { %>
+        <a href="/newmember"><button class="button is-info">Become a member</button></a>
+        <% } %>
+        <a href="/logout"><button class="button is-danger">Log Out</button></a>
+      <% } else { %>
+        <a href="/login"><button class="button is-primary">Log In</button></a>
+        <a href="/signup"><button class="button is-dark">Sign Up</button></a>
+      <% } %>
+    </div>
+  </nav>
+
+  <div class="padded">

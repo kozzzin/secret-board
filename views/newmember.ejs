@@ -1,0 +1,25 @@
+<%- include('header') %>
+    <h1 class="title is-1"><%= title %></h1>
+    <p class="subtitle is-3">If you know a secret, welcome to the club!</p>
+
+    <% if (!!user) { %>
+      <form method="post" action="/newmember">
+        <div class="field">
+          <label class="label">Secret phrase:</label>
+          <div class="control">
+            <input class="input" type="text" name="secretMessage" placeholder="Secret phrase" />
+          </div>
+        </div>
+        <input class="button is-primary" type="submit" value="Submit" />
+      </form>
+    <%  if (user.admin) { %>
+      <p>You are admin</p>
+    <% } %>
+
+    <% if (user.isMember) { %>
+      <p>You are member</p>
+    <% }
+    } else { %>
+      <p>Log in, please!</p>
+    <% } %>
+<%- include('footer') %>
